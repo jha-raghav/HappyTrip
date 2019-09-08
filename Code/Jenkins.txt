@@ -1,8 +1,15 @@
 def pompath = "Code"
 pipeline {
     agent any 
+<<<<<<< HEAD
 	parameters { choice(name: 'REQUESTED_ACTION', choices: ['Package', 'Sonar Analysis'], description: '') }
     stages {
+=======
+        environment {
+    PATH = "C:\\WINDOWS\\SYSTEM32"
+}
+stages {
+>>>>>>> ea4f8d9246c3970dce83bb627c970082cebeb9c7
         stage('Checkout from SCM ') { 
             steps {
                git credentialsId: 'GitHub_Credential_raghav', url: 'https://github.com/jha-raghav/HappyTrip.git'
