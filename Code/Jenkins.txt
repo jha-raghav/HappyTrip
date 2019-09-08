@@ -17,7 +17,7 @@ pipeline {
 	 }
 		  steps {
 		  dir(pompath) {
-                    bat 'mvn -package'
+                    bat 'mvn package'
 }
 		       
 		   }
