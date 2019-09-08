@@ -1,11 +1,23 @@
 pipeline {
     agent any 
+	 tools {
+	  jdk 'JDK8'
+	  maven 'Maven'
+	 }
     stages {
         stage('Checkout from SCM ') { 
             steps {
                git credentialsId: 'GitHub_Credential_raghav', url: 'https://github.com/jha-raghav/HappyTrip.git'
             }
         }
+		stage('Build') {
+		  steps {
+		     def pompath = "Code"
+			 dir(pompath) {
+               bat label: '', script: 'mvn package'
+         }
+		   }
+		}
        
     }
 }
