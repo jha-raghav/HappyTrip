@@ -17,7 +17,7 @@ pipeline {
 	 }
 		  steps {
 		  dir(pompath) {
-                    bat 'start cmd.exe /c mvn -package'
+                    bat 'mvn -package'
 }
 		       
 		   }
