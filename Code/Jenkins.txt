@@ -13,9 +13,7 @@ pipeline {
 	           maven 'Maven'
 	 }
 		  steps {
-			 dir(pompath) {
-               bat label: '', script: 'mvn package'
-         }
+		       powershell label: '', script: 'mvn -version'
 		   }
 		}
        
