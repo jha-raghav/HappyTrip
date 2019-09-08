@@ -1,3 +1,4 @@
+def pompath = "Code"
 pipeline {
     agent any 
 	 tools {
@@ -11,7 +12,6 @@ pipeline {
             }
         }
 		stage('Build') {
-		def pompath = "Code"
 		  steps {
 			 dir(pompath) {
                bat label: '', script: 'mvn package'
