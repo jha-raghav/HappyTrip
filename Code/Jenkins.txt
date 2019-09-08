@@ -16,7 +16,7 @@ pipeline {
 	           maven 'Maven'
 	 }
 		  steps {
-		       bat 'start cmd.exe /c mvn -version'
+		       bat 'start cmd.exe /c mvn -package'
 		   }
 		}
        
