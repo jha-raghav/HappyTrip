@@ -34,12 +34,14 @@ pipeline {
 	     when {
                 expression { params.REQUESTED_ACTION == 'Sonar Analysis' }
             }
-		  steps {
+			withSonarQubeEnv('SonarQube Server') {
+            steps {
 		  dir(pompath) {
                     bat 'mvn package sonar:sonar'
 }
 		       
 		   }
+              }
 		}
        
     }
