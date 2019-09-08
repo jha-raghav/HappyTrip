@@ -16,7 +16,10 @@ pipeline {
 	           maven 'Maven'
 	 }
 		  steps {
-		       bat 'start cmd.exe /c mvn -package'
+		  dir(pompath) {
+                    bat 'start cmd.exe /c mvn -package'
+}
+		       
 		   }
 		}
        
