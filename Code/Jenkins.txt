@@ -1,11 +1,11 @@
 def pompath = "Code"
 pipeline {
     agent any 
-	parameters { choice(name: 'REQUESTED_ACTION', choices: ['Package', 'Sonar Analysis'], description: '') }
-    stages {
-        environment {
+	     environment {
 			PATH = "C:\\WINDOWS\\SYSTEM32"
 		}
+	parameters { choice(name: 'REQUESTED_ACTION', choices: ['Package', 'Sonar Analysis'], description: '') }
+    stages {
         stage('Checkout from SCM ') { 
             steps {
                git credentialsId: 'GitHub_Credential_raghav', url: 'https://github.com/jha-raghav/HappyTrip.git'
@@ -16,9 +16,27 @@ pipeline {
 	           jdk 'JDK8'
 	           maven 'Maven'
 	 }
+	     when {
+                expression { params.REQUESTED_ACTION == 'Package' }
+            }
 		  steps {
 		  dir(pompath) {
-                    bat 'mvn package'
+                  bat 'mvn package'
+}
+		       
+		   }
+		}
+			stage('Build and Sonar Analysis') {
+			 tools {
+	           jdk 'JDK8'
+	           maven 'Maven'
+	 }
+	     when {
+                expression { params.REQUESTED_ACTION == 'Sonar Analysis' }
+            }
+		  steps {
+		  dir(pompath) {
+                    bat 'mvn package sonar:sonar'
 }
 		       
 		   }
