@@ -11,8 +11,8 @@ pipeline {
             }
         }
 		stage('Build') {
+		def pompath = "Code"
 		  steps {
-		     def pompath = "Code"
 			 dir(pompath) {
                bat label: '', script: 'mvn package'
          }
