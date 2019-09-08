@@ -1,6 +1,9 @@
 def pompath = "Code"
 pipeline {
     agent any 
+    environment {
+    PATH = "C:\\WINDOWS\\SYSTEM32"
+}
     stages {
         stage('Checkout from SCM ') { 
             steps {
@@ -13,7 +16,7 @@ pipeline {
 	           maven 'Maven'
 	 }
 		  steps {
-		       powershell 'mvn -version'
+		       bat 'start cmd.exe /c mvn -version'
 		   }
 		}
        
