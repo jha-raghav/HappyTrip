@@ -1,10 +1,6 @@
 def pompath = "Code"
 pipeline {
     agent any 
-	 tools {
-	  jdk 'JDK8'
-	  maven 'Maven'
-	 }
     stages {
         stage('Checkout from SCM ') { 
             steps {
@@ -12,6 +8,10 @@ pipeline {
             }
         }
 		stage('Build') {
+			 tools {
+	           jdk 'JDK8'
+	           maven 'Maven'
+	 }
 		  steps {
 			 dir(pompath) {
                bat label: '', script: 'mvn package'
