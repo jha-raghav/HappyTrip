@@ -1,9 +1,7 @@
 def pompath = "Code"
 pipeline {
     agent any 
-    environment {
-    PATH = "C:\\WINDOWS\\SYSTEM32"
-}
+	parameters { choice(name: 'REQUESTED_ACTION', choices: ['Package', 'Sonar Analysis'], description: '') }
     stages {
         stage('Checkout from SCM ') { 
             steps {
