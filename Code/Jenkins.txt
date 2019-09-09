@@ -30,9 +30,7 @@ pipeline {
 		}				
 			stage('Deploy to PROD') { 
 	        steps {
-			   	def selectedchoice = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE', 
-                parameters: [ booleanParam(name: 'RELEASE', defaultValue: false, 
-                description: '')])
+			   	def selectedchoice = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE', parameters: [ booleanParam(name: 'RELEASE', defaultValue: false, description: '')])
 				if(selectedchoice == true){
                bat 'copy target\\*.war tomcatdirectory\\webapps\\'
             }
