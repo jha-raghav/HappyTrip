@@ -7,6 +7,16 @@ pipeline {
 		}
 	parameters { choice(name: 'REQUESTED_ACTION', choices: ['Package', 'Sonar Analysis'], description: '') }
     stages {
+	    stage('Email Notification') { 
+	     steps {
+		 emailext ( 
+        subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+        body: """<p>Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has been started</p>""",
+         to: 'raghavjha296@gmail.com'
+     )
+			}
+        }
+	
         stage('Checkout from SCM ') { 
             steps {
                git credentialsId: 'GitHub_Credential_raghav', url: 'https://github.com/jha-raghav/HappyTrip.git'
@@ -54,12 +64,12 @@ pipeline {
 		       
 		   }
 		}
-		 stage('Email Notification') { 
-	        steps {
-			 emailext ( 
-       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
-       body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-         <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+		stage('Email Notification') { 
+	     steps {
+		 emailext ( 
+        subject: "FINISHED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+        body: """<p>FINISHED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+         <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>" for more dtails</p>""",
          to: 'raghavjha296@gmail.com'
      )
 			}
