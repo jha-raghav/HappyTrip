@@ -29,16 +29,14 @@ pipeline {
 		   }
 		}				
 			stage('Deploy to PROD') { 
-			def selectedchoice = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE', 
+	        steps {
+			   	def selectedchoice = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE', 
                 parameters: [ booleanParam(name: 'RELEASE', defaultValue: false, 
                 description: '')])
-				
-			if(selectedchoice == true){
-	        steps {
+				if(selectedchoice == true){
                bat 'copy target\\*.war tomcatdirectory\\webapps\\'
             }
 			}
-
         }			
 			stage('Build and Sonar Analysis') {
 			 tools {
