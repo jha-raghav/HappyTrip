@@ -22,6 +22,7 @@ pipeline {
 		  steps {
 		  dir(pompath) {
                   bat 'mvn package'
+				  archiveArtifacts 'Code/target/*.war'
 }
 		       
 		   }
