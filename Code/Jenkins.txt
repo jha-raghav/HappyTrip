@@ -1,4 +1,5 @@
 def pompath = "Code"
+def tomcatdirectory = "C:\Program Files\Apache Software Foundation\Tomcat 7.0"
 pipeline {
     agent any 
 	     environment {
@@ -32,7 +33,6 @@ pipeline {
                         description: '')])
 						
 			stage('Deploy to PROD') { 
-			def tomcatdirectory = "C:\Program Files\Apache Software Foundation\Tomcat 7.0"
 			if(selectedchoice == true){
 	        steps {
                bat 'copy target\*.war tomcatdirectory\webapps\'
