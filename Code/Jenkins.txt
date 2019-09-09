@@ -32,7 +32,8 @@ pipeline {
 			 script{
 			   	env.RELEASE_INPUT = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE !', parameters: [ booleanParam(name: 'Go For Release', defaultValue: false, description: '')])
 				if(env.RELEASE_INPUT){
-				echo "Hello World"
+				 bat 'copy target\\*.war tomcatdirectory\\webapps\\'
+				 bat 'rename tomcatdirectory\\webapps\\happytrip-1.0.0-BUILD-SNAPSHOT.war happytrip.war'
 				}
 			}
 			}
