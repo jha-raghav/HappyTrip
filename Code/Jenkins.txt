@@ -27,8 +27,8 @@ pipeline {
 		       
 		   }
 		}
-		 def selectedchoice = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'Yes', 
-                        parameters: [ booleanParam(name: 'RELEASE' defaultValue: false, 
+		 def selectedchoice = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE', 
+                        parameters: [ booleanParam(name: 'RELEASE', defaultValue: false, 
                         description: '')])
 						
 			stage('Deploy to PROD') { 
