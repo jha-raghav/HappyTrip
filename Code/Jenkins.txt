@@ -32,7 +32,7 @@ pipeline {
 	        steps {
 			 script{
 			   	env.RELEASE_INPUT = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE !', parameters: [ booleanParam(name: 'Go For Release', defaultValue: false, description: '')])
-				echo "%env.RELEASE_INPUT%"
+				echo "${env.RELEASE_INPUT}"
 			}
 			}
         }			
