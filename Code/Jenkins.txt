@@ -31,10 +31,8 @@ pipeline {
 			stage('Deploy to PROD') { 
 	        steps {
 			 script{
-			   	env.RELEASE = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE', parameters: [ booleanParam(name: 'RELEASE', defaultValue: false, description: '')])
-				if(env.RELEASE == true){
-               bat 'copy target\\*.war tomcatdirectory\\webapps\\'
-            }
+			   	env.RELEASE_INPUT = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'RELEASE !', parameters: [ booleanParam(name: 'Go For Release', defaultValue: false, description: '')])
+				echo %env.RELEASE_INPUT%
 			}
 			}
         }			
