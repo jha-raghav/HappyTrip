@@ -29,6 +29,7 @@ pipeline {
             }
         }
 		stage('Build') {
+		catchError {
 			 tools {
 	           jdk 'JDK81'
 	           maven 'Maven'
@@ -37,7 +38,6 @@ pipeline {
                 expression { params.REQUESTED_ACTION == 'Package' }
             }
 		  steps {
-		  catchError {
 		  dir(pompath) {
                  echo "Hello World"
 }
