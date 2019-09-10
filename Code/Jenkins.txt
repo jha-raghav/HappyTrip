@@ -29,17 +29,17 @@ pipeline {
             }
         }
 		stage('Build') {
-		catchError {
 			 tools {
-	           jdk 'JDK81'
+	           jdk 'JDK8'
 	           maven 'Maven'
 	 }
 	     when {
                 expression { params.REQUESTED_ACTION == 'Package' }
             }
 		  steps {
+		  catchError {
 		  dir(pompath) {
-                 echo "Hello World"
+                 bat mvn package223ggh
 }
 		       
 		   }
