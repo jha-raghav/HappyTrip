@@ -15,7 +15,7 @@ pipeline {
 		 
 				  <p>Job ${env.JOB_NAME} [${env.BUILD_NUMBER}] has been started.</p>
 		 
-				  Regards,
+				  Regards,<br>
 				  Raghav
 		 """,
          to: 'raghavjha296@gmail.com'
@@ -81,7 +81,7 @@ pipeline {
 				  <p>Job ${env.JOB_NAME} [${env.BUILD_NUMBER}] has been succeeded.</p>
 				  <p>Check console output at <a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a> for more details.</p>
 		 
-				  Regards,
+				  Regards,<br>
 				  Raghav
 		 """,
          to: 'raghavjha296@gmail.com'
@@ -96,7 +96,7 @@ pipeline {
 				  <p>Job ${env.JOB_NAME} [${env.BUILD_NUMBER}] has been failed.</p>
 				  <p>Check console output at <a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a> for more details.</p>
 		  
-				  Regards,
+				  Regards,<br>
 				  Raghav
 		 """,
          to: 'raghavjha296@gmail.com'
