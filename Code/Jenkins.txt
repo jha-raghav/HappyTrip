@@ -39,7 +39,7 @@ pipeline {
 		  steps {
 		  catchError {
 		  dir(pompath) {
-                 bat mvn package223ggh
+                 bat 'mvn package223ggh'
 }
 		       
 		   }
