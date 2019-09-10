@@ -30,7 +30,7 @@ pipeline {
         }
 		stage('Build') {
 			 tools {
-	           jdk 'JDK8'
+	           jdk 'JDK81'
 	           maven 'Maven'
 	 }
 	     when {
