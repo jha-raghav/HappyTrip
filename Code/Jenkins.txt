@@ -37,12 +37,14 @@ pipeline {
                 expression { params.REQUESTED_ACTION == 'Package' }
             }
 		  steps {
+		  catchError {
 		  dir(pompath) {
                  echo "Hello World"
 }
 		       
 		   }
-		}				
+		}
+}		
 			stage('Deploy to PROD') { 
 	        steps {
 			 script{
