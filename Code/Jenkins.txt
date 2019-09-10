@@ -48,7 +48,7 @@ pipeline {
 			stage('Deploy to PROD') { 
 	        steps {
 			 script{
-			   	env.RELEASE_INPUT = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'Submit', submitter: 'PM', parameters: [ booleanParam(name: 'Go For Release', defaultValue: false, description: '')])
+			   	env.RELEASE_INPUT = input(message: 'Do you want to trigger release for the current Artefacts ?', ok: 'Submit', submitter: 'PM', parameters: [ booleanParam(name: 'Deploy', defaultValue: false, description: '')])
 				if(env.RELEASE_INPUT == 'true'){
 				 bat 'copy /y "C:\\Program Files (x86)\\Jenkins\\workspace\\HappyTrip-pipeline\\Code\\target\\*.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\happytrip.war"'
 				}
